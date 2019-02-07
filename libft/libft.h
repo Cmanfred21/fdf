@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 12:28:20 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/01/05 16:35:11 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/07 13:32:35 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define CHECKMALLOC(x) if (!x) return (-1);
 
 # include <string.h>
+
+void    			ft_free2darr(char **res);
 
 int					get_next_line(const int fd, char **line);
 

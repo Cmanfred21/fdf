@@ -6,7 +6,7 @@
 #    By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/21 15:36:29 by cmanfred          #+#    #+#              #
-#    Updated: 2019/02/06 16:19:35 by cmanfred         ###   ########.fr        #
+#    Updated: 2019/02/07 13:27:43 by cmanfred         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,8 @@ FILES 		= ft_memset.c \
 				ft_memrealloc.c \
 				ft_isnewline.c \
 				ft_copyuntil.c \
-				get_next_line.c
+				get_next_line.c \
+				ft_free2darr.c
 
 OFILES = $(addprefix objectives/, $(FILES:%.c=%.o))
 

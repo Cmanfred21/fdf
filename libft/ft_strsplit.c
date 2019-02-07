@@ -6,12 +6,23 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 13:30:46 by cmanfred          #+#    #+#             */
-/*   Updated: 2018/12/04 13:01:34 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/07 13:36:23 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
+
+static void	ft_clear(char **res, int *lens)
+{
+	int		i;
+
+	free(lens);
+	i = -1;
+	while (res[++i])
+		free(res[i]);
+	free(res);
+}
 
 static int	*ft_countc(const char *s, char c, int len, int words)
 {
@@ -71,21 +82,18 @@ static char	**ft_mal(char const *s, char c)
 	if (!s)
 		return (NULL);
 	len = ft_strlen(s);
-	if (!(res = (char**)malloc(sizeof(char*) * (ft_count(s, c, len)))))
+	if (!(res = (char**)malloc(sizeof(char*) * (ft_count(s, c, len) + 1))))
 		return (NULL);
-	i = 0;
+	i = -1;
 	j = 0;
 	lens = ft_countc(s, c, len, ft_count(s, c, len));
-	while (i < ft_count(s, c, len))
-	{
+	while (++i < ft_count(s, c, len))
 		if (!(res[i] = (char*)malloc(sizeof(char) * (lens[i]) + 1)))
 		{
-			free(res);
-			free(lens);
+			ft_clear(res, lens);
 			return (NULL);
 		}
-		i++;
-	}
+	free(lens);
 	return (res);
 }
 
