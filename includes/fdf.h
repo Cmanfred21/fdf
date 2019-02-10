@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free2darr.c                                     :+:      :+:    :+:   */
+/*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/07 13:24:52 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/10 17:00:51 by cmanfred         ###   ########.fr       */
+/*   Created: 2019/02/10 17:12:56 by cmanfred          #+#    #+#             */
+/*   Updated: 2019/02/10 19:14:25 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#ifndef FDF_H
+# define FDF_H
 
-void	ft_free2darr(char **res)
+int				ft_mapread(int fd, int ***map, int *width, int *height);
+
+typedef struct	s_map
 {
-	int		i;
-
-	i = 0;
-	while (res[i])
-	{
-		ft_strdel(&(res[i]));
-		i++;
-	}
-	free(res);
-}
+	int			**tab;
+	int			height;
+	int			width;
+}				t_map;
+#endif

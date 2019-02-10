@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 20:17:14 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/01/05 17:15:22 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/10 19:25:37 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include "libft.h"
 
-static int		checkeof(int ret, int fd, t_list **head)
+static int		checkeof(int ret, int fd, t_list **head,char **line)
 {
 	t_list	*res;
 	t_list	*pres;
@@ -35,6 +35,7 @@ static int		checkeof(int ret, int fd, t_list **head)
 		pres->next = res->next;
 		free(res->content);
 		free(res);
+		ft_strdel(line);
 		return (1);
 	}
 	return (0);
@@ -100,7 +101,7 @@ int				get_next_line(const int fd, char **line)
 		if (ft_strchr(buff, '\n'))
 			break ;
 	}
-	if (checkeof(ret, fd, &head))
+	if (checkeof(ret, fd, &head, line))
 		return (0);
 	count = ft_copyuntil(line, res->content, '\n');
 	if (ret != 0 || ft_strcmp(res->content, *line))
