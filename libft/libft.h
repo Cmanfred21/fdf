@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 12:28:20 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/07 13:32:35 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/11 18:08:18 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+void                ft_lstrev(t_list **alst);
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 
