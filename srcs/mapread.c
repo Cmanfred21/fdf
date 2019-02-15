@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:53:50 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/11 20:01:09 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/12 15:10:48 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,24 @@
 #include <stdio.h>
 #include "../includes/fdf.h"
 
-static int		ft_clean(t_list **head, t_map **map)
+int				ft_clean(t_list **head, t_map **map)
 {
 	t_list	*next;
+	int		i;
 
-	while (*head)
+	i = -1;
+	if (head)
+		while (*head)
+		{
+			next = (*head)->next;
+			ft_memdel(&((*head)->content));
+			ft_memdel((void **)head);
+			*head = next;
+		}
+	if (map)
 	{
-		next = (*head)->next;
-		ft_memdel(&((*head)->content));
-		ft_memdel((void **)head);
-	}
-	if (map && *map)
-	{
+		while (++i < (*map)->width * (*map)->height)
+			ft_memdel((void **)&((*map)->vectors)[i]);
 		ft_memdel((void **)&((*map)->vectors));
 		ft_memdel((void **)map);
 	}
@@ -53,20 +59,24 @@ static int		ft_lstfill(int fd, t_list **head, t_map **map)
 	t_list	*curr;
 	char	*tmp;
 	int		est;
+	int		flag;
 
 	curr = *head;
+	flag = 0;
 	est = -1;
 	while (get_next_line(fd, &tmp))
 	{
 		if (est == -1)
 			est = ft_countwords(tmp, ' ');
 		else if (ft_countwords(tmp, ' ') != est || ft_checkmap(tmp))
-			return (1);
+			flag++;
 		((*map)->height)++;
 		curr = ft_lstnew(tmp, ft_strlen(tmp) + 1);
 		ft_lstadd(head, curr);
 		ft_strdel(&tmp);
 	}
+	if (flag)
+		return (1);
 	(*map)->width = est;
 	ft_lstrev(head);
 	return (0);
@@ -78,21 +88,22 @@ static int		ft_mapconv(t_list **head, t_map **map)
 	int		y;
 	t_list	*tmp;
 	char	**split;
+	int		pos;
 
 	tmp = *head;
-	y = 0;
-	while (y < (*map)->height)
+	y = -1;
+	while (++y < (*map)->height)
 	{
 		x = -1;
 		split = ft_strsplit(tmp->content, ' ');
 		while (++x < (*map)->width)
 		{
-			(((*map)->vectors)[y * (*map)->width + x]) = ft_memalloc(sizeof(t_vector));
-			(((*map)->vectors)[y * (*map)->width + x])->z = (double)ft_atoi(split[x]);
-			(((*map)->vectors)[y * (*map)->width + x])->y = (double)y;
-			(((*map)->vectors)[y * (*map)->width + x])->x = (double)x;
+			pos = y * (*map)->width + x;
+			(((*map)->vectors)[pos]) = ft_memalloc(sizeof(t_vector));
+			(((*map)->vectors)[pos])->z = (double)ft_atoi(split[x]);
+			(((*map)->vectors)[pos])->y = (double)y;
+			(((*map)->vectors)[pos])->x = (double)x;
 		}
-		y++;
 		tmp = tmp->next;
 		ft_free2darr(split);
 	}
@@ -109,8 +120,10 @@ int				ft_mapread(int fd, t_map **map)
 	*map = ft_memalloc(sizeof(t_map));
 	if (ft_lstfill(fd, &head, map) == 1)
 		return (ft_clean(&head, map));
-	(*map)->vectors = ft_memalloc(sizeof(t_vector *) * (*map)->width * (*map)->height);
+	(*map)->vectors = ft_memalloc(sizeof(t_vector *)
+			* (*map)->width * (*map)->height);
 	if (ft_mapconv(&head, map))
 		return (ft_clean(&head, map));
+	ft_clean(&head, NULL);
 	return (0);
 }

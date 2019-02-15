@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_module.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 13:41:18 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/12 14:27:05 by cmanfred         ###   ########.fr       */
+/*   Created: 2019/02/15 16:20:25 by cmanfred          #+#    #+#             */
+/*   Updated: 2019/02/15 16:22:00 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-void	ft_memdel(void **ap)
+int		ft_module(int num)
 {
-	if (!ap)
-		return ;
-	free(*ap);
-	*ap = NULL;
+	if (num < 0 && num != -2147483648)
+		return (-num);
+	return (num);
 }

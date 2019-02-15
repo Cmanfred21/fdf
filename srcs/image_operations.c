@@ -1,21 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   image_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 13:41:18 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/12 14:27:05 by cmanfred         ###   ########.fr       */
+/*   Created: 2019/02/13 15:08:08 by cmanfred          #+#    #+#             */
+/*   Updated: 2019/02/13 15:27:17 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-void	ft_memdel(void **ap)
+void		ft_delimage(t_image *img)
 {
-	if (!ap)
-		return ;
-	free(*ap);
-	*ap = NULL;
-}

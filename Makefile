@@ -6,7 +6,7 @@
 #    By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/09 14:44:38 by cmanfred          #+#    #+#              #
-#    Updated: 2019/02/10 18:23:34 by cmanfred         ###   ########.fr        #
+#    Updated: 2019/02/15 16:32:32 by cmanfred         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,25 +20,25 @@ OBJ = $(addprefix objectives/, $(FILES:.c=.o))
 all: $(NAME)
 
 $(NAME):$(OBJ) | lib
-	gcc $(FLAGS) $(LIBFLAGS) -o $(NAME) $(OBJ)
+	@gcc $(FLAGS) $(LIBFLAGS) -o $(NAME) $(OBJ)
 
 objectives/%.o: srcs/%.c | objectives
-	gcc $(FLAGS) -o $@ -c $^
+	@gcc $(FLAGS) -o $@ -c $^
 
 re: fclean all
 
 lib:
-	make -C ./libft
-	make -C ./minilibx
+	@make -C ./libft
+	@make -C ./minilibx
 
 clean:
-	rm -rf objectives/
-	make clean -C ./libft
-	make clean -C ./minilibx
+	@rm -rf objectives/
+	@make clean -C ./libft
+	@make clean -C ./minilibx
 
 fclean: clean
-	make fclean -C ./libft
-	rm -rf $(NAME)
+	@make fclean -C ./libft
+	@rm -rf $(NAME)
 
 objectives:
-	mkdir objectives/
+	@mkdir objectives/

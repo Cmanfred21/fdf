@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 14:50:42 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/11 18:14:04 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/13 15:26:46 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,46 +17,27 @@
 #include "../libft/libft.h"
 #include "../includes/fdf.h"
 
-/*void	ft_clean(t_map **map)
+static int	ft_return(char *str)
 {
-	int		**res;
-	int		i;
-
-	res = (*map)->tab;
-	i = 0;
-	while (i < (*map)->height)
-	{
-		free(res[i]);
-		i++;
-	}
-	free(res);
-	free(*map);
+	ft_putendl(str);
+	return (1);
 }
-*/
-int	main(int argc, char **argv)
+
+int			main(int argc, char **argv)
 {
 	int		fd;
 	t_map	*map;
 //	t_mlx	*mlx;
 
-	map = (t_map *)malloc(sizeof(t_map));
-	map->width = 0;
-	map->height = 0;
 	if (argc != 2)
-	{
-		ft_putendl("usage: fdf input file");
-		return (0);
-	}
+		return (ft_return("usage: fdf input_file"));
 	fd = open(argv[1], O_RDONLY);
 	if (ft_mapread(fd, &map))
-	{
-		ft_putendl("map error");
-//		ft_clean(&map);
-		return (0);
-	}
-//	ft_clean(&map);
+		return(ft_return("map error"));
+//	mlx->map = map;
+	ft_clean(NULL, &map);
 	return (0);
 	//	mlx->init = mlx_init();
-	//	mlx->window = mlx_new_window(mlx_ptr, 1920, 1080, argv[1]);
+	//	mlx->window = mlx_new_window(mlx_ptr, WIN_WIDTH, WIN_HEIGHT, argv[1]);
 	//	mlx_loop(mlx_ptr);
 }
