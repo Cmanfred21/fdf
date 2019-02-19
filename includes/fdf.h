@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 17:12:56 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/19 15:55:07 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/19 21:47:46 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,15 @@ typedef struct	s_cam
 	double		**matrix;
 }				t_cam;
 
+typedef struct	s_mouse
+{
+	int			x;
+	int			y;
+	int			prevx;
+	int			prevy;
+	int			down;
+}				t_mouse;
+
 typedef struct	s_mlx
 {
 	t_map		*map;
@@ -73,6 +82,7 @@ typedef struct	s_mlx
 	void		*window;
 	t_image		*image;
 	t_cam		*cam;
+	t_mouse		*mouse;
 }				t_mlx;
 
 int             ft_mapread(int fd, t_map **map);
@@ -96,5 +106,12 @@ void			ft_minmax(t_map *map);
 t_vector		vector_pos(t_map *map, int x, int y);
 
 t_image			*new_image(t_mlx *mlx);
+
+int				ft_mouse_move(int x, int y, t_mlx *mlx);
+
+int				ft_mouse_up(int but, int x, int y, t_mlx *mlx);
+
+int				ft_mouse_down(int but, int x, int y, t_mlx *mlx);
+
 
 #endif

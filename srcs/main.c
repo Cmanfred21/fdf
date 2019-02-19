@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 14:50:42 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/19 18:39:55 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/19 21:42:44 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ int			main(int argc, char **argv)
 		mlx->cam->scale = (WIN_HEIGHT / map->height) / 2;
 	ft_putimage(mlx);
 	mlx_key_hook(mlx->window, hook_keydown, &mlx);
+	mlx_hook(mlx->window, 4, 0, ft_mouse_down, mlx);
+	mlx_hook(mlx->window, 5, 0, ft_mouse_up, mlx);
+	mlx_hook(mlx->window, 6, 0, ft_mouse_move, mlx);
 	mlx_loop(mlx->init);
 	return (0);
 }

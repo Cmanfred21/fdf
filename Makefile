@@ -6,14 +6,14 @@
 #    By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/09 14:44:38 by cmanfred          #+#    #+#              #
-#    Updated: 2019/02/19 14:12:08 by cmanfred         ###   ########.fr        #
+#    Updated: 2019/02/19 20:50:34 by cmanfred         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 FLAGS = -Wall -Wextra -Werror -I includes/ -g
 LIBFLAGS = -L./libft -lft -L./minilibx -lmlx -framework OpenGL -framework AppKit
-FILES = main.c mapread.c ft_cut_off.c image_operations.c init.c linedraw.c vector_operations.c
+FILES = main.c mapread.c ft_cut_off.c image_operations.c init.c linedraw.c vector_operations.c hook_mouse.c
 INCFILES = includes/fdf.h
 SRCS = $(addprefix srcs/, $(FILES))
 OBJ = $(addprefix objectives/, $(FILES:.c=.o))
