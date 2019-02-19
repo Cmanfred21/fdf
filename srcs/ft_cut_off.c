@@ -6,9 +6,11 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 18:21:15 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/15 19:47:28 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/19 14:30:23 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/fdf.h"
 
 static int	ft_reason(t_vector *pt)
 {
@@ -18,7 +20,7 @@ static int	ft_reason(t_vector *pt)
 		return (2);
 	if (pt->x >= WIN_WIDTH)
 		return (3);
-	if (tp->x < 0)
+	if (pt->x < 0)
 		return (4);
 	return (0);
 }
@@ -56,21 +58,21 @@ void		ft_cut_off(t_vector *pt1, t_vector *pt2)
 
 	reason1 = ft_reason(pt1);
 	reason2 = ft_reason(pt2);
-	while (reason1 || reason2)
+	while ((reason1 || reason2) && reason1 != reason2)
 	{
 		res = reason1 ? reason1 : reason2;
-		ft_minus_reason(&v, pt1, pt2, res);
+		ft_minus_reason(&corr, pt1, pt2, res);
 		if (res == reason1)
 		{
 			pt1->x = corr.x;
 			pt1->y = corr.y;
-			r1 = ft_reason(pt1);
+			reason1 = ft_reason(pt1);
 		}
 		else if (res == reason2)
 		{
 			pt2->x = corr.x;
 			pt2->y = corr.y;
-			r2 = ft_reason(pt2);
+			reason2 = ft_reason(pt2);
 		}
 	}
 }

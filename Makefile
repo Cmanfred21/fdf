@@ -6,20 +6,21 @@
 #    By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/09 14:44:38 by cmanfred          #+#    #+#              #
-#    Updated: 2019/02/15 16:32:32 by cmanfred         ###   ########.fr        #
+#    Updated: 2019/02/19 14:12:08 by cmanfred         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 FLAGS = -Wall -Wextra -Werror -I includes/ -g
-LIBFLAGS = -L./libft -lft #-L./minilibx -lmlx -framework OpenGL -framework AppKit
-FILES = main.c mapread.c
+LIBFLAGS = -L./libft -lft -L./minilibx -lmlx -framework OpenGL -framework AppKit
+FILES = main.c mapread.c ft_cut_off.c image_operations.c init.c linedraw.c vector_operations.c
+INCFILES = includes/fdf.h
 SRCS = $(addprefix srcs/, $(FILES))
 OBJ = $(addprefix objectives/, $(FILES:.c=.o))
 
 all: $(NAME)
 
-$(NAME):$(OBJ) | lib
+$(NAME):$(OBJ) $(INCFILES) | lib
 	@gcc $(FLAGS) $(LIBFLAGS) -o $(NAME) $(OBJ)
 
 objectives/%.o: srcs/%.c | objectives

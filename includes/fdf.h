@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 17:12:56 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/15 17:57:06 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/19 14:13:05 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 # define FDF_H
 
 #include "../libft/libft.h"
+#include "../minilibx/mlx.h"
 
-# define WIN_WIDTH = 1920;
-# define WIN_HEIGHT = 1080;
+# define WIN_WIDTH	1920
+# define WIN_HEIGHT	1080
 
 typedef struct	s_image
 {
 	void		*ptr;
-	int			*bitspp;
+	char		*data;
+	int			bitspp;
 	int			string;
 	int			endian;
 }				t_image;
@@ -40,10 +42,9 @@ typedef struct	s_line
 	t_vector	finish;
 	int			dx;
 	int			dy;
-	int			sx;
 	int			sy;
-	int			fau;
-	int			fauconst;
+	int			sx;
+	double		fau;
 }				t_line;
 
 typedef struct	s_map
@@ -51,7 +52,19 @@ typedef struct	s_map
 	t_vector	**vectors;
 	int			height;
 	int			width;
+	int			min;
+	int			max;
 }				t_map;
+
+typedef struct	s_cam
+{
+	double		offsetx;
+	double		offsety;
+	double		x;
+	double		y;
+	int			scale;
+	double		**matrix;
+}				t_cam;
 
 typedef struct	s_mlx
 {
@@ -59,10 +72,29 @@ typedef struct	s_mlx
 	void		*init;
 	void		*window;
 	t_image		*image;
+	t_cam		*cam;
 }				t_mlx;
 
 int             ft_mapread(int fd, t_map **map);
 
 int				ft_clean(t_list **head, t_map **map);
+
+void			ft_cut_off(t_vector *pt1, t_vector *pt2);
+
+void			image_set_pixel(t_image *image, int x, int y, int color);
+
+t_image			*ft_delimage(t_mlx *mlx, t_image *img);
+
+t_mlx			*init(char *file);
+
+void			ft_putimage(t_mlx *mlx);
+
+t_vector		project_vector(t_vector v, t_mlx *mlx);
+
+void			ft_minmax(t_map *map);
+
+t_vector		vector_pos(t_map *map, int x, int y);
+
+t_image			*new_image(t_mlx *mlx);
 
 #endif

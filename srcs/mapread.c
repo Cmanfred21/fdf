@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:53:50 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/12 15:10:48 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/19 15:13:34 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,10 @@ static int		ft_checkmap(char *tmp)
 	i = 0;
 	while (tmp[++i] != '\0')
 	{
-		if ((tmp[i] > '9' || tmp[i] < '0') && tmp[i] != ' ')
+		if ((tmp[i] > '9' || tmp[i] < '0') && tmp[i] != ' ' && tmp[i] != 'x'
+				&& (tmp[i] > 'F' || tmp[i] < 'A') && tmp[i] != '-' && tmp[i] != ',')
 		{
-			ft_strdel(&tmp);
+			ft_putendl("incorrect symbols");
 			return (1);
 		}
 	}
@@ -69,7 +70,10 @@ static int		ft_lstfill(int fd, t_list **head, t_map **map)
 		if (est == -1)
 			est = ft_countwords(tmp, ' ');
 		else if (ft_countwords(tmp, ' ') != est || ft_checkmap(tmp))
+		{
+			ft_putendl ("incorrect length");
 			flag++;
+		}
 		((*map)->height)++;
 		curr = ft_lstnew(tmp, ft_strlen(tmp) + 1);
 		ft_lstadd(head, curr);
