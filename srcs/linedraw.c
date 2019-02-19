@@ -6,11 +6,28 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:06:03 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/19 14:31:02 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/19 18:25:08 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+static int	ft_bres_color(t_vector *pt1, t_line *line)
+{
+	int		res;
+	double	percent;
+	int		col1;
+	int		col2;
+
+	if (line->dx > line->dy)
+		percent = ((pt1->x - line->start.x) / (line->finish.x - line->start.x));
+	else
+		percent = ((pt1->y - line->start.y) / (line->finish.y - line->start.y));
+	col1 = (line->start.color >> 16) & 0xFF;
+	col2 = (line->finish.color >> 16) & 0xFF;
+	res = col1 - ((col1 - col2) * percent);
+	return (res << 16 | res << 8 | 255);
+}
 
 static int	ft_make_bresenham(t_mlx *mlx, t_line *line, t_vector *pt1, t_vector *pt2)
 {
@@ -20,7 +37,7 @@ static int	ft_make_bresenham(t_mlx *mlx, t_line *line, t_vector *pt1, t_vector *
 //	ft_putendl(ft_itoa(pt1->x));
 //	ft_putendl(ft_itoa(pt1->y));
 //	ft_putendl("");
-	image_set_pixel(mlx->image, (int)pt1->x, (int)pt1->y, 255);
+	image_set_pixel(mlx->image, (int)pt1->x, (int)pt1->y, ft_bres_color(pt1, line));
 	if (line->fau > -(line->dx))
 	{
 		line->fau -= line->dy;

@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 17:12:56 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/19 14:13:05 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/19 15:55:07 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct	s_cam
 	double		offsety;
 	double		x;
 	double		y;
-	int			scale;
+	double		scale;
 	double		**matrix;
 }				t_cam;
 
