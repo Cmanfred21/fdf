@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 20:17:14 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/10 19:25:37 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 21:24:25 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include "libft.h"
 
-static int		checkeof(int ret, int fd, t_list **head,char **line)
+static int		checkeof(int ret, int fd, t_list **head, char **line)
 {
 	t_list	*res;
 	t_list	*pres;

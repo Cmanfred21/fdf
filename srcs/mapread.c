@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:53:50 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/20 16:41:21 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 21:20:34 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static int		ft_checkmap(char *tmp)
 	while (tmp[++i] != '\0')
 	{
 		if ((tmp[i] > '9' || tmp[i] < '0') && tmp[i] != ' ' && tmp[i] != 'x'
-				&& (tmp[i] > 'F' || tmp[i] < 'A') && tmp[i] != '-' && tmp[i] != ',')
+				&& (tmp[i] > 'F' || tmp[i] < 'A')
+				&& tmp[i] != '-' && tmp[i] != ',')
 		{
 			ft_putendl("incorrect symbols");
 			return (1);

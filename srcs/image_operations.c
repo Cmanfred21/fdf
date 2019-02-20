@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:08:08 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/18 16:16:27 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 21:13:02 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,14 @@ t_image		*ft_delimage(t_mlx *mlx, t_image *img)
 	return (NULL);
 }
 
-void	image_set_pixel(t_image *image, int x, int y, int color)
+void		image_set_pixel(t_image *image, int x, int y, int color)
 {
 	if (x < 0 || x >= WIN_WIDTH || y < 0 || y >= WIN_HEIGHT)
 		return ;
-//	ft_putendl(ft_itoa(color));
 	*(int *)(image->data + (x * image->bitspp + y * image->string)) = color;
-//	ft_putendl(ft_itoa(*(int *)(image->data + (x + y * WIN_WIDTH) * image->bitspp)));
 }
 
-t_image	*new_image(t_mlx *mlx)
+t_image		*new_image(t_mlx *mlx)
 {
 	t_image		*img;
 

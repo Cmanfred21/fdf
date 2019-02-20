@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 14:50:42 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/20 21:06:40 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 21:14:45 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 static int	hook_keydown(int key, t_mlx **mlx)
 {
-
 	if (key == 53)
 		exit(EXIT_SUCCESS);
 	if (key == 34)
@@ -49,7 +48,7 @@ int			main(int argc, char **argv)
 		return (ft_return("usage: fdf input_file"));
 	fd = open(argv[1], O_RDONLY);
 	if (ft_mapread(fd, &map))
-		return(ft_return("map error"));
+		return (ft_return("map error"));
 	if ((mlx = init(argv[1])) == NULL)
 		return (1);
 	mlx->map = map;

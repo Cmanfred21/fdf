@@ -6,13 +6,12 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 20:24:25 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/20 17:58:33 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 21:13:23 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include <math.h>
-#include <stdio.h>
 
 t_mlx		*mlxdel(t_mlx *mlx)
 {
@@ -24,7 +23,7 @@ t_mlx		*mlxdel(t_mlx *mlx)
 	return (NULL);
 }
 
-t_mlx	*init(char *file)
+t_mlx		*init(char *file)
 {
 	t_mlx	*mlx;
 
@@ -32,9 +31,10 @@ t_mlx	*init(char *file)
 		return (NULL);
 	if ((mlx->init = mlx_init()) == NULL ||
 			(mlx->window = mlx_new_window(mlx->init, WIN_WIDTH,
-										  WIN_HEIGHT, file)) == NULL ||
+										WIN_HEIGHT, file)) == NULL ||
 			(mlx->cam = ft_memalloc(sizeof(t_cam))) == NULL ||
-			(mlx->image = new_image(mlx)) == NULL || (mlx->mouse = ft_memalloc(sizeof(t_mouse))) == NULL)
+			(mlx->image = new_image(mlx)) == NULL ||
+			(mlx->mouse = ft_memalloc(sizeof(t_mouse))) == NULL)
 		return (mlxdel(mlx));
 	mlx->cam->x = 0.5;
 	mlx->cam->y = 0.5;

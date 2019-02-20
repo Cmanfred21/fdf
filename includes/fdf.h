@@ -6,15 +6,15 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 17:12:56 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/20 18:01:25 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 21:23:58 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-#include "../libft/libft.h"
-#include "../minilibx/mlx.h"
+# include "../libft/libft.h"
+# include "../minilibx/mlx.h"
 
 # define WIN_WIDTH	1920
 # define WIN_HEIGHT	1080
@@ -86,7 +86,7 @@ typedef struct	s_mlx
 	t_mouse		*mouse;
 }				t_mlx;
 
-int             ft_mapread(int fd, t_map **map);
+int				ft_mapread(int fd, t_map **map);
 
 int				ft_clean(t_list **head, t_map **map);
 
@@ -113,6 +113,5 @@ int				ft_mouse_move(int x, int y, t_mlx *mlx);
 int				ft_mouse_up(int but, int x, int y, t_mlx *mlx);
 
 int				ft_mouse_down(int but, int x, int y, t_mlx *mlx);
-
 
 #endif
