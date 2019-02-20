@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 20:34:57 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/20 16:33:41 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 18:07:26 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int		ft_mouse_up(int but, int x, int y, t_mlx *mlx)
 
 int		ft_mouse_move(int x, int y, t_mlx *mlx)
 {
-	if (mlx->mouse->x == 0)
-		mlx->mouse->x = x;
-	if (mlx->mouse->y == 0)
-		mlx->mouse->y = y;
+	if (mlx->mouse->prevx == 0)
+		mlx->mouse->prevx = x;
+	if (mlx->mouse->prevy == 0)
+		mlx->mouse->prevy = y;
 	mlx->mouse->prevx = mlx->mouse->x;
 	mlx->mouse->prevy= mlx->mouse->y;
 	mlx->mouse->x = x;

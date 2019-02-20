@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 18:21:15 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/20 16:42:49 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 21:07:31 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ static void	ft_minus_reason(t_vector *corr, t_vector *pt1, t_vector *pt2, int r)
 {
 	if (r & 1)
 	{
-		corr->x = pt1->x + (pt2->x - pt1->x) * (WIN_HEIGHT - pt1->y) / (pt2->y - pt1->y);
+		corr->x = pt1->x + (pt2->x - pt1->x) *
+			(WIN_HEIGHT - pt1->y) / (pt2->y - pt1->y);
 		corr->y = WIN_HEIGHT - 1;
 	}
 	else if (r & (1 << 1))
@@ -43,7 +44,8 @@ static void	ft_minus_reason(t_vector *corr, t_vector *pt1, t_vector *pt2, int r)
 	else if (r & (1 << 2))
 	{
 		corr->x = WIN_WIDTH - 1;
-		corr->y = pt1->y + (pt2->y - pt1->y) * (WIN_WIDTH - pt1->x) / (pt2->x - pt1->x);
+		corr->y = pt1->y + (pt2->y - pt1->y) *
+			(WIN_WIDTH - pt1->x) / (pt2->x - pt1->x);
 	}
 	else if (r & (1 << 3))
 	{

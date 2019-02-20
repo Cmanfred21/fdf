@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 14:50:42 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/20 16:34:35 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 21:06:40 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ static int	hook_keydown(int key, t_mlx **mlx)
 
 	if (key == 53)
 		exit(EXIT_SUCCESS);
-	else if (key == 126 || key == 125)
+	if (key == 34)
 	{
-		if (key == 126)
-			((*mlx)->cam->zscale) *= 1.1f;
-		else
-			((*mlx)->cam->zscale) /= 1.1f;
+		if ((*mlx)->cam->iso == 0)
+			(*mlx)->cam->iso++;
+		else if ((*mlx)->cam->iso == 1)
+			(*mlx)->cam->iso--;
 	}
 	ft_putimage(*mlx);
 	return (0);

@@ -6,11 +6,13 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 20:24:25 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/20 16:13:39 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 17:58:33 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+#include <math.h>
+#include <stdio.h>
 
 t_mlx		*mlxdel(t_mlx *mlx)
 {

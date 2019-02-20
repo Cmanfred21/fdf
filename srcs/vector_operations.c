@@ -6,12 +6,13 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 16:37:15 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/20 16:25:45 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 18:11:32 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include <math.h>
+#include <stdio.h>
 
 static t_vector	rotate(t_vector p, t_cam *r)
 {

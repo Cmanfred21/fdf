@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:06:03 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/19 20:16:20 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 18:49:09 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@ static int	ft_make_bresenham(t_mlx *mlx, t_line *line, t_vector *pt1, t_vector *
 	if (pt1->x < 0 || pt1->x >= WIN_WIDTH || pt1->y < 0 || pt1->y >= WIN_HEIGHT
 					|| pt2->x < 0 || pt2->x >= WIN_WIDTH || pt2->y < 0 || pt2->y >= WIN_HEIGHT)
 				return (1);
-//	ft_putendl(ft_itoa(pt1->x));
-//	ft_putendl(ft_itoa(pt1->y));
-//	ft_putendl("");
 	image_set_pixel(mlx->image, (int)pt1->x, (int)pt1->y, ft_bres_color(pt1, line));
 	if (line->fau > -(line->dx))
 	{
