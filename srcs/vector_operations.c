@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 16:37:15 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/19 20:12:52 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 16:25:45 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,18 @@ static t_vector	rotate(t_vector p, t_cam *r)
 	double		z;
 
 	x = p.x;
-	z = p.z;
+	z = p.z * r->zscale;
+	y = p.y;
+	if (r->iso == 1)
+	{
+		v.x = (x - y) * cos(0.523599);
+		v.y = -z + (x + y) * sin(0.523599);
+		v.z = p.z;
+		v.color = p.color;
+		return (v);
+	}
 	v.x = cos(r->y) * x + sin(r->y) * z;
 	v.z = -sin(r->y) * x + cos(r->y) * z;
-	y = p.y;
 	z = v.z;
 	v.y = cos(r->x) * y - sin(r->x) * z;
 	v.z = sin(r->x) * y + cos(r->x) * z;

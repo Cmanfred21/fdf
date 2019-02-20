@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 20:24:25 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/19 21:19:53 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 16:13:39 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ t_mlx	*init(char *file)
 			(mlx->image = new_image(mlx)) == NULL || (mlx->mouse = ft_memalloc(sizeof(t_mouse))) == NULL)
 		return (mlxdel(mlx));
 	mlx->cam->x = 0.5;
-	mlx->cam->y = -0.5;
+	mlx->cam->y = 0.5;
 	mlx->cam->scale = 32;
 	mlx->cam->offsetx = WIN_WIDTH / 2;
 	mlx->cam->offsety = WIN_HEIGHT / 2;
 	mlx->mouse->x = 0;
 	mlx->mouse->y = 0;
+	mlx->cam->iso = 0;
+	mlx->cam->zscale = 1;
 	return (mlx);
 }

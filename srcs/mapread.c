@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:53:50 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/19 18:33:21 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 16:41:21 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,7 @@ static int		ft_lstfill(int fd, t_list **head, t_map **map)
 		if (est == -1)
 			est = ft_countwords(tmp, ' ');
 		else if (ft_countwords(tmp, ' ') != est || ft_checkmap(tmp))
-		{
-			ft_putendl ("incorrect length");
 			flag++;
-		}
 		((*map)->height)++;
 		curr = ft_lstnew(tmp, ft_strlen(tmp) + 1);
 		ft_lstadd(head, curr);

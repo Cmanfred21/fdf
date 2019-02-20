@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 17:12:56 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/19 21:47:46 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 16:41:32 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ typedef struct	s_cam
 	double		y;
 	double		scale;
 	double		**matrix;
+	double		zscale;
+	int			iso;
 }				t_cam;
 
 typedef struct	s_mouse

@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 18:21:15 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/19 19:07:31 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 16:42:49 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,24 @@ static int	ft_reason(t_vector *pt)
 	return (res);
 }
 
-static void	ft_minus_reason(t_vector *corr, t_vector *pt1, t_vector *pt2, int res)
+static void	ft_minus_reason(t_vector *corr, t_vector *pt1, t_vector *pt2, int r)
 {
-	if (res & 1)
+	if (r & 1)
 	{
 		corr->x = pt1->x + (pt2->x - pt1->x) * (WIN_HEIGHT - pt1->y) / (pt2->y - pt1->y);
 		corr->y = WIN_HEIGHT - 1;
 	}
-	else if (res & (1 << 1))
+	else if (r & (1 << 1))
 	{
 		corr->x = pt1->x + (pt2->x - pt1->x) * (0 - pt1->y) / (pt2->y - pt1->y);
 		corr->y = 0;
 	}
-	else if (res & (1 << 2))
+	else if (r & (1 << 2))
 	{
 		corr->x = WIN_WIDTH - 1;
 		corr->y = pt1->y + (pt2->y - pt1->y) * (WIN_WIDTH - pt1->x) / (pt2->x - pt1->x);
 	}
-	else if (res & (1 << 3))
+	else if (r & (1 << 3))
 	{
 		corr->x = 0;
 		corr->y = pt1->y + (pt2->y - pt1->y) * (0 - pt1->x) / (pt2->x - pt1->x);
