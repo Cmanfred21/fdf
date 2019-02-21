@@ -6,12 +6,16 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 20:24:25 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/20 21:13:23 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/21 14:12:55 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include <math.h>
+
+/*
+** Function, that frees all allocated structures if something went wrong
+*/
 
 t_mlx		*mlxdel(t_mlx *mlx)
 {
@@ -22,6 +26,11 @@ t_mlx		*mlxdel(t_mlx *mlx)
 	ft_memdel((void **)&mlx);
 	return (NULL);
 }
+
+/*
+** Function, that allocates mlx and all structures inside mlx and inititalizes
+** some variables, that will be needed in future
+*/
 
 t_mlx		*init(char *file)
 {

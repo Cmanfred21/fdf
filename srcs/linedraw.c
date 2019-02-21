@@ -6,11 +6,15 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:06:03 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/20 21:20:00 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/21 21:57:58 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+/*
+** Function, that calculates the color of every pixel
+*/
 
 static int	ft_bres_color(t_vector *pt1, t_line *line)
 {
@@ -28,6 +32,11 @@ static int	ft_bres_color(t_vector *pt1, t_line *line)
 	res = col1 - ((col1 - col2) * percent);
 	return (res << 16 | res << 8 | 255);
 }
+
+/*
+** Function, that set a pixel, using the coordinates  of point 1, then changes
+** point 1 coordinates according to bresenham algoritm
+*/
 
 static int	ft_make_bresenham(t_mlx *mlx, t_line *line,
 		t_vector *pt1, t_vector *pt2)
@@ -52,6 +61,11 @@ static int	ft_make_bresenham(t_mlx *mlx, t_line *line,
 	return (0);
 }
 
+/*
+** Function, that calculate some constants for bresenham algorithm and then
+** launches it
+*/
+
 static void	ft_drawline(t_mlx *mlx, t_vector pt1, t_vector pt2)
 {
 	t_line	line;
@@ -72,6 +86,11 @@ static void	ft_drawline(t_mlx *mlx, t_vector pt1, t_vector pt2)
 		if (ft_make_bresenham(mlx, &line, &pt1, &pt2))
 			break ;
 }
+
+/*
+** Function, that renderes the image, projecting points with some variables of
+** angle, scale, offset etc. and call ft_drawline wit these points
+*/
 
 void		ft_putimage(t_mlx *mlx)
 {

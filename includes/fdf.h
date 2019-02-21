@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 17:12:56 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/20 21:23:58 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/21 18:17:54 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,7 @@ int				ft_mouse_move(int x, int y, t_mlx *mlx);
 int				ft_mouse_up(int but, int x, int y, t_mlx *mlx);
 
 int				ft_mouse_down(int but, int x, int y, t_mlx *mlx);
+
+void			ft_z_zero(t_map **map);
 
 #endif
