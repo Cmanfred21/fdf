@@ -6,28 +6,35 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 20:34:57 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/21 16:35:47 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/27 18:37:09 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
 /*
-** Function, that hooks which mouse button was pressed
-*/
+ ** Function, that hooks which mouse button was pressed
+ */
 
 int		ft_mouse_down(int but, int x, int y, t_mlx *mlx)
 {
 	x = 0;
 	y = 0;
+	if (but == 4 || but == 5)
+		mlx->mouse->down = 0;
+	if (but == 4)
+		mlx->cam->scale *= 1.1f;
+	if (but == 5)
+		mlx->cam->scale /= 1.1f;
+	ft_putimage(mlx);
 	mlx->mouse->down |= (1 << but);
 	return (0);
 }
 
 /*
-** Function, that anullates all mouse buttons if any was released
-** Needed, because of my controls
-*/
+ ** Function, that anullates all mouse buttons if any was released
+ ** Needed, because of my controls
+ */
 
 int		ft_mouse_up(int but, int x, int y, t_mlx *mlx)
 {
@@ -39,9 +46,9 @@ int		ft_mouse_up(int but, int x, int y, t_mlx *mlx)
 }
 
 /*
-** Function, that hooks mouse moving and make appropirate variables
-** transformation, then renders the image again
-*/
+ ** Function, that hooks mouse moving and make appropirate variables
+ ** transformation, then renders the image again
+ */
 
 int		ft_mouse_move(int x, int y, t_mlx *mlx)
 {

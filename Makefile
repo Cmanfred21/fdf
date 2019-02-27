@@ -6,13 +6,13 @@
 #    By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/09 14:44:38 by cmanfred          #+#    #+#              #
-#    Updated: 2019/02/21 18:32:19 by cmanfred         ###   ########.fr        #
+#    Updated: 2019/02/27 14:44:30 by cmanfred         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 FLAGS = -Wall -Wextra -Werror -I includes/ -g
-LIBFLAGS = -L./libft -lft -L./minilibx -lmlx -framework OpenGL -framework AppKit
+LIBFLAGS = -L./libft -lft -L./minilibx -lmlx -framework OpenGL -framework AppKit -lpthread
 FILES = main.c mapread.c ft_cut_off.c image_operations.c init.c linedraw.c vector_operations.c hook_mouse.c
 INCFILES = includes/fdf.h
 SRCS = $(addprefix srcs/, $(FILES))

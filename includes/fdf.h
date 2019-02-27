@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 17:12:56 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/21 18:17:54 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/27 16:11:38 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 
-# define WIN_WIDTH	1920
-# define WIN_HEIGHT	1080
+# define WIN_WIDTH	1280
+# define WIN_HEIGHT	720
 
 typedef struct	s_image
 {
@@ -85,6 +85,13 @@ typedef struct	s_mlx
 	t_cam		*cam;
 	t_mouse		*mouse;
 }				t_mlx;
+
+typedef struct	s_pthrdata
+{
+	int			ymax;
+	int			ymin;
+	t_mlx		*mlx;
+}				t_pthrdata;
 
 int				ft_mapread(int fd, t_map **map);
 
