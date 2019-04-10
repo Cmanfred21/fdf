@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmanfred <cmanfred@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 17:12:56 by cmanfred          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/02/27 16:11:38 by cmanfred         ###   ########.fr       */
-=======
-/*   Updated: 2019/02/20 21:23:58 by cmanfred         ###   ########.fr       */
->>>>>>> parent of 2eb5705... proper color gradient, added author file and comments
+/*   Updated: 2019/04/10 20:31:22 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +16,8 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 
-# define WIN_WIDTH	1280
-# define WIN_HEIGHT	720
+# define WIN_WIDTH	1920
+# define WIN_HEIGHT	1080
 
 typedef struct	s_image
 {
@@ -89,13 +85,6 @@ typedef struct	s_mlx
 	t_cam		*cam;
 	t_mouse		*mouse;
 }				t_mlx;
-
-typedef struct	s_pthrdata
-{
-	int			ymax;
-	int			ymin;
-	t_mlx		*mlx;
-}				t_pthrdata;
 
 int				ft_mapread(int fd, t_map **map);
 

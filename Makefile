@@ -7,16 +7,20 @@
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/09 14:44:38 by cmanfred          #+#    #+#              #
 <<<<<<< HEAD
+<<<<<<< HEAD
 #    Updated: 2019/02/27 14:44:30 by cmanfred         ###   ########.fr        #
 =======
 #    Updated: 2019/02/19 20:50:34 by cmanfred         ###   ########.fr        #
 >>>>>>> parent of 2eb5705... proper color gradient, added author file and comments
+=======
+#    Updated: 2019/02/21 18:32:19 by cmanfred         ###   ########.fr        #
+>>>>>>> parent of 12c29cc... made zoom on mouse wheel + workwith pthreads
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 FLAGS = -Wall -Wextra -Werror -I includes/ -g
-LIBFLAGS = -L./libft -lft -L./minilibx -lmlx -framework OpenGL -framework AppKit -lpthread
+LIBFLAGS = -L./libft -lft -L./minilibx -lmlx -framework OpenGL -framework AppKit
 FILES = main.c mapread.c ft_cut_off.c image_operations.c init.c linedraw.c vector_operations.c hook_mouse.c
 INCFILES = includes/fdf.h
 SRCS = $(addprefix srcs/, $(FILES))
