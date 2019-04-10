@@ -6,7 +6,11 @@
 #    By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/09 14:44:38 by cmanfred          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2019/02/27 14:44:30 by cmanfred         ###   ########.fr        #
+=======
+#    Updated: 2019/02/19 20:50:34 by cmanfred         ###   ########.fr        #
+>>>>>>> parent of 2eb5705... proper color gradient, added author file and comments
 #                                                                              #
 # **************************************************************************** #
 

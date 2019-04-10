@@ -6,16 +6,13 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:53:50 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/21 18:07:57 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 21:20:34 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "../includes/fdf.h"
-
-/*
-** Functions, that frees all allocated structures if map read/check went wrong
-*/
 
 int				ft_clean(t_list **head, t_map **map)
 {
@@ -41,10 +38,6 @@ int				ft_clean(t_list **head, t_map **map)
 	return (1);
 }
 
-/*
-** Function, that checks that map has only allowed symbols
-*/
-
 static int		ft_checkmap(char *tmp)
 {
 	int		i;
@@ -62,11 +55,6 @@ static int		ft_checkmap(char *tmp)
 	}
 	return (0);
 }
-
-/*
-** Function, that fills list with lines of the map, checks there are
-** the same amount of points in every line and launches ft_mapcheck
-*/
 
 static int		ft_lstfill(int fd, t_list **head, t_map **map)
 {
@@ -96,11 +84,6 @@ static int		ft_lstfill(int fd, t_list **head, t_map **map)
 	return (0);
 }
 
-/*
-** Function, that converts checked valid lines into coordinates of points
-** and place them into t_vector structure
-*/
-
 static int		ft_mapconv(t_list **head, t_map **map)
 {
 	int		x;
@@ -128,10 +111,6 @@ static int		ft_mapconv(t_list **head, t_map **map)
 	}
 	return (0);
 }
-
-/*
-** Reads the map, checks if something went wrong
-*/
 
 int				ft_mapread(int fd, t_map **map)
 {

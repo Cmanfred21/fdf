@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   hook_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmanfred <cmanfred@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 20:34:57 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/27 18:37:09 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/04/10 20:21:06 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-/*
- ** Function, that hooks which mouse button was pressed
- */
 
 int		ft_mouse_down(int but, int x, int y, t_mlx *mlx)
 {

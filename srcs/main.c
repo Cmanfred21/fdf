@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 14:50:42 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/21 22:12:17 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 21:14:45 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,6 @@
 #include "../minilibx/mlx.h"
 #include "../libft/libft.h"
 #include "../includes/fdf.h"
-
-void		ft_z_zero(t_map **map)
-{
-	int			x;
-	int			y;
-	t_vector	*v;
-
-	y = -1;
-	while (++y < (*map)->height)
-	{
-		x = -1;
-		while (++x < (*map)->width)
-		{
-			v = ((*map)->vectors)[y * (*map)->width + x];
-			v->z -= (*map)->min;
-		}
-	}
-	(*map)->max -= (*map)->min;
-	(*map)->min = 0;
-}
-
-/*
-** Function, that hooks ESC to close the
-** window and I to make an iso-proection of the map
-*/
 
 static int	hook_keydown(int key, t_mlx **mlx)
 {
@@ -57,21 +32,11 @@ static int	hook_keydown(int key, t_mlx **mlx)
 	return (0);
 }
 
-/*
-** Function, that prints string str, followed by \n and exits
-*/
-
 static int	ft_return(char *str)
 {
 	ft_putendl(str);
 	exit(0);
 }
-
-/*
-** main, that checks valid argument, reads and checks the map,
-** initializes mlx structure, renders first image and then hooks
-** all needed keys and events
-*/
 
 int			main(int argc, char **argv)
 {

@@ -6,15 +6,11 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:08:08 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/21 18:08:09 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 21:13:02 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-/*
-** Function, that will free the image if something went wrong
-*/
 
 t_image		*ft_delimage(t_mlx *mlx, t_image *img)
 {
@@ -27,21 +23,12 @@ t_image		*ft_delimage(t_mlx *mlx, t_image *img)
 	return (NULL);
 }
 
-/*
-** User-friendly function, that sets pixel in the image, using it's formatted
-** X and Y coordinates
-*/
-
 void		image_set_pixel(t_image *image, int x, int y, int color)
 {
 	if (x < 0 || x >= WIN_WIDTH || y < 0 || y >= WIN_HEIGHT)
 		return ;
 	*(int *)(image->data + (x * image->bitspp + y * image->string)) = color;
 }
-
-/*
-** Function, that allocates new image
-*/
 
 t_image		*new_image(t_mlx *mlx)
 {

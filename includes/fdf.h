@@ -6,7 +6,11 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 17:12:56 by cmanfred          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/02/27 16:11:38 by cmanfred         ###   ########.fr       */
+=======
+/*   Updated: 2019/02/20 21:23:58 by cmanfred         ###   ########.fr       */
+>>>>>>> parent of 2eb5705... proper color gradient, added author file and comments
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +124,5 @@ int				ft_mouse_move(int x, int y, t_mlx *mlx);
 int				ft_mouse_up(int but, int x, int y, t_mlx *mlx);
 
 int				ft_mouse_down(int but, int x, int y, t_mlx *mlx);
-
-void			ft_z_zero(t_map **map);
 
 #endif

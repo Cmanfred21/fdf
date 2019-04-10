@@ -6,15 +6,11 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 18:21:15 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/21 14:46:38 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 21:07:31 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-/*
-** Function, that calculates in which region point is situated
-*/
 
 static int	ft_reason(t_vector *pt)
 {
@@ -31,11 +27,6 @@ static int	ft_reason(t_vector *pt)
 		res |= (1 << 3);
 	return (res);
 }
-
-/*
-** Function, that cuts lines on the edge of the screen, trying to elminate
-** one reason per call
-*/
 
 static void	ft_minus_reason(t_vector *corr, t_vector *pt1, t_vector *pt2, int r)
 {
@@ -62,12 +53,6 @@ static void	ft_minus_reason(t_vector *corr, t_vector *pt1, t_vector *pt2, int r)
 		corr->y = pt1->y + (pt2->y - pt1->y) * (0 - pt1->x) / (pt2->x - pt1->x);
 	}
 }
-
-/*
-** Function, that cuts the lines, if points are over the screen.
-**  If the regions, where the points are situated, overlap
-** it will not draw the line at all
-*/
 
 void		ft_cut_off(t_vector *pt1, t_vector *pt2)
 {

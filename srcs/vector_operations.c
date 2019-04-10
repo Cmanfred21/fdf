@@ -6,18 +6,13 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 16:37:15 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/21 18:24:37 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/02/20 21:16:03 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include <math.h>
-
-/*
-** Function, that project points on the screen so it will look like 3D-model
-** Also, there is additional function for iso-projection, because I haven't
-** thought out how to rotate iso-projection
-*/
+#include <stdio.h>
 
 static t_vector	rotate(t_vector p, t_cam *r)
 {
@@ -46,20 +41,10 @@ static t_vector	rotate(t_vector p, t_cam *r)
 	return (v);
 }
 
-/*
-** User-friendly function, that returns needed element from massive of
-** structures, using only X and Y coordinates of the point
-*/
-
 t_vector		vector_pos(t_map *map, int x, int y)
 {
 	return (*((map->vectors)[y * map->width + x]));
 }
-
-/*
-** Function, that calculates the lowest and the highest point of the map.
-** Usefull for gradient coloring only
-*/
 
 void			ft_minmax(t_map *map)
 {
@@ -76,20 +61,13 @@ void			ft_minmax(t_map *map)
 		while (++x < map->width)
 		{
 			v = vector_pos(map, x, y);
-			if ((int)v.z < map->min)
-				map->min = (int)v.z;
-			if ((int)v.z > map->max)
-				map->max = (int)v.z;
+			if (v.z < map->min)
+				map->min = v.z;
+			if (v.z > map->max)
+				map->max = v.z;
 		}
 	}
-	if (map->min < 0 || map->max < 0)
-		ft_z_zero(&map);
 }
-
-/*
-** Function, that fills the point with the needed color, according to its
-** altitude
-*/
 
 static int		ft_fill_color(t_vector *v, t_mlx *mlx)
 {
@@ -98,11 +76,6 @@ static int		ft_fill_color(t_vector *v, t_mlx *mlx)
 	res = ((255 * v->z) / (mlx->map->max - mlx->map->min));
 	return (res << 16 | res << 8 | 255);
 }
-
-/*
-** Function, that rotates the map, formates the map with scale and
-** offset variables and place the map somewhere in the middle of the screen
-*/
 
 t_vector		project_vector(t_vector v, t_mlx *mlx)
 {
