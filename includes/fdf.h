@@ -6,7 +6,7 @@
 /*   By: cmanfred <cmanfred@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 17:12:56 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/04/14 19:40:10 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/04/14 22:23:05 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int				ft_mapread(int fd, t_map **map);
 
 int				ft_clean(t_list **head, t_map **map);
 
-void			ft_cut_off(t_vector *pt1, t_vector *pt2);
+int				ft_cut_off(t_vector *pt1, t_vector *pt2);
 
 void			image_set_pixel(t_image *image, int x, int y, int color);
 

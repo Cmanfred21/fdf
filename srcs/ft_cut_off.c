@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cut_off.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmanfred <cmanfred@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 18:21:15 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/20 21:07:31 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/04/14 22:43:24 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	ft_minus_reason(t_vector *corr, t_vector *pt1, t_vector *pt2, int r)
 	}
 }
 
-void		ft_cut_off(t_vector *pt1, t_vector *pt2)
+int			ft_cut_off(t_vector *pt1, t_vector *pt2)
 {
 	t_vector	corr;
 	int			reason1;
@@ -80,4 +80,5 @@ void		ft_cut_off(t_vector *pt1, t_vector *pt2)
 			reason2 = ft_reason(pt2);
 		}
 	}
+	return (!(reason1 & reason2));
 }

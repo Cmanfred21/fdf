@@ -6,7 +6,7 @@
 /*   By: cmanfred <cmanfred@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 20:34:57 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/04/14 19:45:47 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/04/14 22:44:17 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ int		ft_mouse_down(int but, int x, int y, t_mlx *mlx)
 	if (but == 5)
 		mlx->cam->scale /= 1.1f;
 	ft_putimage(mlx);
-
 	return (0);
 }
 
 /*
- ** Function, that anullates all mouse buttons if any was released
- ** Needed, because of my controls
- */
+** Function, that anullates all mouse buttons if any was released
+** Needed, because of my controls
+*/
 
 int		ft_mouse_up(int but, int x, int y, t_mlx *mlx)
 {
@@ -43,9 +42,9 @@ int		ft_mouse_up(int but, int x, int y, t_mlx *mlx)
 }
 
 /*
- ** Function, that hooks mouse moving and make appropirate variables
- ** transformation, then renders the image again
- */
+** Function, that hooks mouse moving and make appropirate variables
+** transformation, then renders the image again
+*/
 
 int		ft_mouse_move(int x, int y, t_mlx *mlx)
 {

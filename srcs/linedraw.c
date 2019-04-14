@@ -6,7 +6,7 @@
 /*   By: cmanfred <cmanfred@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:06:03 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/04/14 20:06:05 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/04/14 22:22:40 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ static void	ft_drawline(t_mlx *mlx, t_vector pt1, t_vector pt2)
 	pt2.y = (int)pt2.y;
 	line.start = pt1;
 	line.finish = pt2;
-	ft_cut_off(&pt1, &pt2);
+	if (!(ft_cut_off(&pt1, &pt2)))
+		return ;
 	line.dx = (int)ft_module((int)(pt1.x) - (int)(pt2.x));
 	line.dy = (int)ft_module((int)(pt1.y) - (int)(pt2.y));
 	line.sx = (int)pt1.x < (int)pt2.x ? 1 : -1;

@@ -6,7 +6,7 @@
 /*   By: cmanfred <cmanfred@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 14:50:42 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/04/14 20:30:10 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/04/14 22:47:48 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,16 @@ static int	ft_return(char *str)
 	exit(0);
 }
 
+static void ft_scale(t_mlx *mlx, t_map *map)
+{
+	if ((WIN_WIDTH / map->width) < (WIN_HEIGHT / map->height))
+		mlx->cam->scale = ((WIN_WIDTH / map->width) / 2 > 1 ?
+			(WIN_WIDTH / map->width) / 2 : 1);
+	else
+		mlx->cam->scale = ((WIN_HEIGHT / map->height) / 2 > 1 ?
+			(WIN_HEIGHT / map->height) / 2 : 1);
+}
+
 int			main(int argc, char **argv)
 {
 	int		fd;
@@ -52,10 +62,7 @@ int			main(int argc, char **argv)
 	if ((mlx = init(argv[1])) == NULL)
 		return (1);
 	mlx->map = map;
-	if ((WIN_WIDTH / map->width) < (WIN_HEIGHT / map->height))
-		mlx->cam->scale = ((WIN_WIDTH / map->width) / 2 > 1 ? (WIN_WIDTH / map->width) / 2 : 1);
-	else
-		mlx->cam->scale = ((WIN_HEIGHT / map->height) / 2 > 1 ? (WIN_HEIGHT / map->height) / 2 : 1);
+	ft_scale(mlx, map);
 	ft_putimage(mlx);
 	mlx_key_hook(mlx->window, hook_keydown, &mlx);
 	mlx_hook(mlx->window, 4, 0, ft_mouse_down, mlx);
