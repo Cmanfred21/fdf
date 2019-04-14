@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapread.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmanfred <cmanfred@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:53:50 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/20 21:20:34 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/04/14 20:19:39 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,10 +122,12 @@ int				ft_mapread(int fd, t_map **map)
 	*map = ft_memalloc(sizeof(t_map));
 	if (ft_lstfill(fd, &head, map) == 1)
 		return (ft_clean(&head, map));
-	(*map)->vectors = ft_memalloc(sizeof(t_vector *)
-			* (*map)->width * (*map)->height);
+	if (!((*map)->vectors = ft_memalloc(sizeof(t_vector *)
+			* (*map)->width * (*map)->height)))
+			return (ft_clean(&head, map));
 	if (ft_mapconv(&head, map))
 		return (ft_clean(&head, map));
 	ft_clean(&head, NULL);
+	printf("%f \n", (*map)->vectors[(*map)->width * (*map)->height - 2]->z);
 	return (0);
 }

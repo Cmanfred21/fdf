@@ -6,45 +6,68 @@
 /*   By: cmanfred <cmanfred@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 15:06:03 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/04/10 20:31:41 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/04/14 20:06:05 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
+void		ft_z_zero(t_map **map)
+{
+	int			x;
+	int			y;
+	t_vector	*v;
+
+	y = -1;
+	while (++y < (*map)->height)
+	{
+		x = -1;
+		while (++x < (*map)->width)
+		{
+			v = ((*map)->vectors)[y * (*map)->width + x];
+			v->z -= (*map)->min;
+		}
+	}
+	(*map)->max -= (*map)->min;
+	(*map)->min = 0;
+}
+
 /*
-** Function, that calculates the color of every pixel
-*/
+ ** Function, that calculates the color of every pixel
+ */
 
 static int	ft_bres_color(t_vector *pt1, t_line *line)
 {
-	int		res;
+	// int		res;
 	double	percent;
-	int		col1;
-	int		col2;
+	int		col_r;
+	int		col_g;
+	int		col_b;
 
 	if (line->dx > line->dy)
 		percent = ((pt1->x - line->start.x) / (line->finish.x - line->start.x));
 	else
 		percent = ((pt1->y - line->start.y) / (line->finish.y - line->start.y));
-	col1 = (line->start.color >> 16) & 0xFF;
-	col2 = (line->finish.color >> 16) & 0xFF;
-	res = col1 - ((col1 - col2) * percent);
-	return (res << 16 | res << 8 | 255);
+	// col1 = (line->start.color >> 16) & 0xFF;
+	// col2 = (line->finish.color >> 16) & 0xFF;
+	col_r = ((line->start.color >> 16) & 0xFF) - (((line->start.color >> 16) & 0xFF - (line->finish.color >> 16) & 0xFF) * percent);
+	col_g = ((line->start.color >> 8) & 0xFF) - (((line->start.color >> 8) & 0xFF - (line->finish.color >> 8) & 0xFF) * percent);
+	col_b = ((line->start.color) & 0xFF) - (((line->start.color) & 0xFF - (line->finish.color) & 0xFF) * percent);
+	return (col_r << 16 | col_g << 8 | col_b);
 }
 
 /*
-** Function, that set a pixel, using the coordinates  of point 1, then changes
-** point 1 coordinates according to bresenham algoritm
-*/
+ ** Function, that set a pixel, using the coordinates  of point 1, then changes
+ ** point 1 coordinates according to bresenham algoritm
+ */
 
 static int	ft_make_bresenham(t_mlx *mlx, t_line *line,
 		t_vector *pt1, t_vector *pt2)
 {
 	if (pt1->x < 0 || pt1->x >= WIN_WIDTH ||
 			pt1->y < 0 || pt1->y >= WIN_HEIGHT
-					|| pt2->x < 0 || pt2->x >= WIN_WIDTH
-					|| pt2->y < 0 || pt2->y >= WIN_HEIGHT)
+			|| pt2->x < 0 || pt2->x >= WIN_WIDTH
+			|| pt2->y < 0 || pt2->y >= WIN_HEIGHT)
 		return (1);
 	image_set_pixel(mlx->image, (int)pt1->x, (int)pt1->y,
 			ft_bres_color(pt1, line));
@@ -62,9 +85,9 @@ static int	ft_make_bresenham(t_mlx *mlx, t_line *line,
 }
 
 /*
-** Function, that calculate some constants for bresenham algorithm and then
-** launches it
-*/
+ ** Function, that calculate some constants for bresenham algorithm and then
+ ** launches it
+ */
 
 static void	ft_drawline(t_mlx *mlx, t_vector pt1, t_vector pt2)
 {
@@ -88,9 +111,9 @@ static void	ft_drawline(t_mlx *mlx, t_vector pt1, t_vector pt2)
 }
 
 /*
-** Function, that renderes the image, projecting points with some variables of
-** angle, scale, offset etc. and call ft_drawline wit these points
-*/
+ ** Function, that renderes the image, projecting points with some variables of
+ ** angle, scale, offset etc. and call ft_drawline wit these points
+ */
 
 void		ft_putimage(t_mlx *mlx)
 {

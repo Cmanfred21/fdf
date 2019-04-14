@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmanfred <cmanfred@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 14:50:42 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/20 21:14:45 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/04/14 20:30:10 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int			main(int argc, char **argv)
 		return (1);
 	mlx->map = map;
 	if ((WIN_WIDTH / map->width) < (WIN_HEIGHT / map->height))
-		mlx->cam->scale = (WIN_WIDTH / map->width) / 2;
+		mlx->cam->scale = ((WIN_WIDTH / map->width) / 2 > 1 ? (WIN_WIDTH / map->width) / 2 : 1);
 	else
-		mlx->cam->scale = (WIN_HEIGHT / map->height) / 2;
+		mlx->cam->scale = ((WIN_HEIGHT / map->height) / 2 > 1 ? (WIN_HEIGHT / map->height) / 2 : 1);
 	ft_putimage(mlx);
 	mlx_key_hook(mlx->window, hook_keydown, &mlx);
 	mlx_hook(mlx->window, 4, 0, ft_mouse_down, mlx);

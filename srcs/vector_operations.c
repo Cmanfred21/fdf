@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmanfred <cmanfred@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 16:37:15 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/20 21:16:03 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/04/14 20:12:40 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void			ft_minmax(t_map *map)
 				map->max = v.z;
 		}
 	}
+	ft_z_zero(&map);
 }
 
 static int		ft_fill_color(t_vector *v, t_mlx *mlx)
@@ -74,6 +75,8 @@ static int		ft_fill_color(t_vector *v, t_mlx *mlx)
 	int		res;
 
 	res = ((255 * v->z) / (mlx->map->max - mlx->map->min));
+	if (v->z < 0.9f)
+		return (40 << 16 | 40 << 8 | 40);
 	return (res << 16 | res << 8 | 255);
 }
 
