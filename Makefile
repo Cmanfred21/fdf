@@ -9,7 +9,7 @@
 #    Updated: 2019/04/14 19:38:13 by cmanfred         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
+Ku-ku
 NAME = fdf
 FLAGS = -Wall -Wextra -Werror -I includes/ -g
 LIBFLAGS = -L./libft -lft -L./minilibx -lmlx -framework OpenGL -framework AppKit
